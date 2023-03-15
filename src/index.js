@@ -1,4 +1,5 @@
 import PointTool from './point/PointTool';
+import PinPointTool from './pinpoint/PinpointTool';
 import RubberbandCircleTool from './circle/RubberbandCircleTool';
 import RubberbandEllipseTool from './ellipse/RubberbandEllipseTool';
 import RubberbandFreehandTool from './freehand/RubberbandFreehandTool';
@@ -23,6 +24,9 @@ const SelectorPack = (anno, config) => {
   tools.forEach(tool => {
     if (tool === 'point')
       anno.addDrawingTool(PointTool);
+
+    if (tool === 'pinpoint')
+      anno.addDrawingTool(PinPointTool);
 
     if (tool === 'circle')
       anno.addDrawingTool(RubberbandCircleTool);
