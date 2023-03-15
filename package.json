@@ -31,6 +31,8 @@
     "webpack-dev-server": "^4.3.1"
   },
   "dependencies": {
-    "@recogito/annotorious": "^2.5.9"
+    "@babel/core": "^7.21.3",
+    "@recogito/annotorious": "^2.5.9",
+    "@svgdotjs/svg.js": "^3.1.2"
   }
 }
