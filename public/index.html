@@ -16,7 +16,7 @@
     </p>
     <img id="hallstatt" src="1280px-Hallstatt.jpg">
 
-    <script src="annotorious-selector-pack.js"></script>
+    <script src="../dist/annotorious-selector-pack.js"></script>
     <script>
       window.onload = function() {
         var anno = Annotorious.init({
@@ -25,7 +25,7 @@
         });
 
         Annotorious.SelectorPack(anno, {
-          tools: ['circle', 'ellipse', 'rect', 'freehand', 'polygon', 'line']
+          tools: ['circle', 'ellipse', 'rect', 'freehand', 'polygon', 'line', 'pinpoint']
         });
 
         var tools = anno.listDrawingTools();
