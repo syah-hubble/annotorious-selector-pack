@@ -12,6 +12,7 @@ const ALL_TOOLS = new Set([
   'ellipse',
   'freehand',
   'line',
+  'pinpoint',
   // 'multipolygon' // exclude from defaults for now
 ]);
 
