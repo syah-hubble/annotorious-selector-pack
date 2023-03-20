@@ -71,7 +71,7 @@ export default class Pinpoint {
       },
       body: [
         {
-          type: 'position',
+          purpose: 'position',
           value: `xywh=pixel:${this.anchor[0]},${this.anchor[1]},47,56`,
         },
       ],

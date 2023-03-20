@@ -147,6 +147,7 @@ export default class EditablePinpoint extends EditableShape {
   onMouseUp = (evt) => {
     this.grabbedElem = null;
     this.grabbedAt = null;
+    // this.emit('update', toSVGTarget(this.shape, this.env.image));
   };
 
   get element() {
@@ -166,7 +167,7 @@ export default class EditablePinpoint extends EditableShape {
   getAnnotationPosition = (annotation) => {
     const position = annotation.targets
       ?.find((t) => t.renderedVia?.name === 'pinpoint')
-      ?.body?.find((b) => b.type === 'position');
+      ?.body?.find((b) => b.purpose === 'position');
 
     if (position) {
       const {value} = position;

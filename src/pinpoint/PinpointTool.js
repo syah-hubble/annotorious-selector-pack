@@ -12,15 +12,26 @@ export default class PinpointTool extends Tool {
     this.pinpoint = null;
   }
 
-  startDrawing = (x, y) => {
-    this.pinpoint = new Pinpoint(x, y, this.g, this.env);
-    // Emit the SVG shape with selection attached
-    const {element} = this.pinpoint;
-    element.annotation = this.pinpoint.toSelection();
-
-    // Emit the completed shape...
-    this.emit('complete', element);
-    this.stop();
+  startDrawing = (x, y, _, evt) => {
+    // The top-most existing annotation at this position (if any)
+    const annotation = evt.target.closest('.a9s-annotation')?.annotation;
+    if (!annotation) {
+      this.pinpoint = new Pinpoint(x, y, this.g, this.env);
+      // Emit the SVG shape with selection attached
+      const {element} = this.pinpoint;
+      element.annotation = this.pinpoint.toSelection();
+      element.body = [
+        {
+          purpose: 'position',
+          value: `xywh=pixel:${x},${y},47,56`,
+        },
+      ];
+      // Emit the completed shape...
+      this.emit('complete', element);
+      //this.stop();
+    } else {
+      this.emit('cancel');
+    }
   };
 
   stop = () => {
