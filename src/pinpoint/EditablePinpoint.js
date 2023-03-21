@@ -4,14 +4,13 @@ import {
   svgFragmentToShape,
   toSVGTarget,
 } from '@recogito/annotorious/src/selectors/EmbeddedSVG';
-import {SVG_NAMESPACE} from '@recogito/annotorious/src/util/SVG';
+import { SVG_NAMESPACE } from '@recogito/annotorious/src/util/SVG';
 import {
   format,
   setFormatterElSize,
 } from '@recogito/annotorious/src/util/Formatting';
-import {parseRectFragment} from '@recogito/annotorious/src/selectors/RectFragment';
 
-import {drawPin} from './Pin';
+import { drawPin } from './Pin';
 // TODO optional: mask to dim the outside area
 //import Mask from './FreehandMask';
 
@@ -20,11 +19,11 @@ const getPoints = (shape) => {
   const points = [];
   if (pointList.length > 0) {
     var point = pointList[0].substring(1).trim().split(' ');
-    points.push({x: parseFloat(point[0]), y: parseFloat(point[1])});
+    points.push({ x: parseFloat(point[0]), y: parseFloat(point[1]) });
 
     for (let i = 1; i < pointList.length; i++) {
       var point = pointList[i].trim().split(' ');
-      points.push({x: parseFloat(point[0]), y: parseFloat(point[1])});
+      points.push({ x: parseFloat(point[0]), y: parseFloat(point[1]) });
     }
   }
 
@@ -94,7 +93,7 @@ export default class EditablePinpoint extends EditableShape {
     const outer = this.shape.querySelector('.a9s-outer');
     outer.setAttribute('d', str);
 
-    const {x, y, width, height} = outer.getBBox();
+    const { x, y, width, height } = outer.getBBox();
 
     setFormatterElSize(this.elementGroup, x, y, width, height);
   };
@@ -107,7 +106,7 @@ export default class EditablePinpoint extends EditableShape {
   onGrab = (grabbedElem) => (evt) => {
     this.grabbedElem = grabbedElem;
     const pos = this.getSVGPoint(evt);
-    this.grabbedAt = {x: pos.x, y: pos.y};
+    this.grabbedAt = { x: pos.x, y: pos.y };
   };
 
   onMouseMove = (evt) => {
@@ -117,16 +116,16 @@ export default class EditablePinpoint extends EditableShape {
     if (this.grabbedElem) {
       const pos = this.getSVGPoint(evt);
 
-      const {x, y, width, height} = getBBox(this.shape);
+      const { x, y, width, height } = getBBox(this.shape);
 
       if (this.grabbedElem === this.shape) {
-        const {naturalWidth, naturalHeight} = this.env.image;
+        const { naturalWidth, naturalHeight } = this.env.image;
 
         const dx = constrain(x, pos.x - this.grabbedAt.x, naturalWidth - width);
         const dy = constrain(
           y,
           pos.y - this.grabbedAt.y,
-          naturalHeight - height,
+          naturalHeight - height
         );
 
         const inner = this.shape.querySelector('.a9s-inner');
@@ -170,7 +169,7 @@ export default class EditablePinpoint extends EditableShape {
       ?.body?.find((b) => b.purpose === 'position');
 
     if (position) {
-      const {value} = position;
+      const { value } = position;
       const format = value.includes(':')
         ? value.substring(value.indexOf('=') + 1, value.indexOf(':'))
         : 'pixel';
@@ -187,7 +186,7 @@ export default class EditablePinpoint extends EditableShape {
         h = (h * this.env.image.naturalHeight) / 100;
       }
 
-      return {x, y, w, h};
+      return { x, y, w, h };
     }
     return null;
   };
