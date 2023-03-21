@@ -1,4 +1,4 @@
-import './LabelFormatter.css';
+ 
 import { SVG } from '@svgdotjs/svg.js';
 
 const ShapeLabelsFormatter = (config) => (annotation) => {

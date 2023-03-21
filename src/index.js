@@ -46,5 +46,5 @@ const SelectorPack = (anno, config) => {
   });
 
 }
-export { ShapeLabelsFormatter } from './formatter/LabelFormatter'
+export { default as ShapeLabelsFormatter } from './formatter/LabelFormatter'
 export default SelectorPack;
