@@ -16,7 +16,7 @@
       }
       
       .column {
-        max-width:700px;
+        
         padding:20px;
         margin:0 auto;
         background-color:#fff;
@@ -49,6 +49,7 @@
         fill:#fff;
       }
     </style>
+        <script src="../dist/annotorious-selector-pack.js"></script>
     <script>
       window.onload = function() {
         var viewer = OpenSeadragon({
@@ -69,12 +70,27 @@
         var anno = OpenSeadragon.Annotorious(viewer, {
           locale: 'auto',
           allowEmpty: true,
-          gigapixelMode: true
+          gigapixelMode: true,
+          animationTime: 0.5,
+      blendTime: 0.1,
+      constrainDuringPan: true,
+      maxZoomPixelRatio: 2,
+      minZoomLevel: 1,
+      visibilityRatio: 1,
+      zoomPerScroll: 2,
+      showZoomControl: true,
+      zoomInButton: 'zoom-in',
+      zoomOutButton: 'zoom-out',
+      homeButton: 'home',
+      fullPageButton: 'full-page',
+      nextButton: 'next',
+      previousButton: 'previous' 
         });
 
-        Annotorious.SelectorPack(anno);
-
-        anno.setDrawingTool('line');
+        Annotorious.SelectorPack(anno, {
+          tools: ['circle', 'pinpoint', 'ellipse', 'rect', 'freehand', 'polygon', 'line']
+        }); 
+        anno.setDrawingTool('pinpoint');
       }
     </script>
   </head>
@@ -85,6 +101,6 @@
     </div>      
     <script src="https://cdn.jsdelivr.net/npm/openseadragon@2.4.2/build/openseadragon/openseadragon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@recogito/annotorious-openseadragon@2.5.16/dist/openseadragon-annotorious.min.js"></script>
-    <script src="annotorious-selector-pack.js"></script>
+     
   </body>
 </html>
