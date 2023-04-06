@@ -6,46 +6,23 @@ const ShapeLabelsFormatter = (config) => (annotation) => {
     ? annotation.body
     : [annotation.body];
 
-  const firstTag = bodies.find((b) => b.purpose == 'tagging');
+  const firstTag = bodies.find((b) => b.purpose === 'tagging');
 
   if (firstTag) {
-    const group = SVG().group();
+    // Return an HTML label, wrapped in an SVG foreignObject
 
-    // var safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    // if (safari) {
-    //   group.add(SVG().circle(15).attr('class', 'rect').fill('white'));
-    // } else {
-    //   group.add(SVG().circle(30).attr('class', 'rect').fill('white'));
-    // }
-
-    group.add(
-      SVG()
-        .group()
-        .attr('class', 'circle')
-        .add(
-          SVG()
-            .path('M0,30a30,30 0 1,0 60,0a30,30 0 1,0 -60,0')
-            .attr('transform-origin', 'center')
-            .size(40)
-        )
+    const foreignObject = document.createElementNS(
+      'http://www.w3.org/2000/svg',
+      'foreignObject'
     );
-    group.add(
-      SVG()
-        .group()
-        .attr('class', 'a9s-shape-label')
-        .add(SVG().text(firstTag.value).attr('text-anchor', 'middle'))
-    );
+    foreignObject.innerHTML = ` <label xmlns="http://www.w3.org/1999/xhtml" >${firstTag.value}</label>`;
 
-    // const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    // svg.appendChild(group.node);
     return {
-      element: group.node,
-      className: firstTag.value,
+      element: foreignObject,
     };
-
-    
-  
   }
+  
+ 
 };
 
 export default ShapeLabelsFormatter;
