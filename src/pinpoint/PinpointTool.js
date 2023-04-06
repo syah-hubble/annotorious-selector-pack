@@ -18,7 +18,7 @@ export default class PinpointTool extends Tool {
     if (!annotation) {
       this.pinpoint = new Pinpoint(x, y, this.g, this.env);
       // Emit the SVG shape with selection attached
-      const {element} = this.pinpoint;
+      const { element } = this.pinpoint;
       element.annotation = this.pinpoint.toSelection();
       element.body = [
         {

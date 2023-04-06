@@ -1,7 +1,7 @@
-import {Selection} from '@recogito/annotorious/src/tools/Tool';
-import {toSVGTarget} from '@recogito/annotorious/src/selectors/EmbeddedSVG';
-import {SVG_NAMESPACE} from '@recogito/annotorious/src/util/SVG';
-import {drawPin, setPinSize} from './Pin';
+import { Selection } from '@recogito/annotorious/src/tools/Tool';
+import { toSVGTarget } from '@recogito/annotorious/src/selectors/EmbeddedSVG';
+import { SVG_NAMESPACE } from '@recogito/annotorious/src/util/SVG';
+import { drawPin, setPinSize } from './Pin';
 
 /**
  * A 'rubberband' selection tool for creating a circle by
@@ -37,7 +37,7 @@ export default class Pinpoint {
   }
 
   dragTo = (oppositeX, oppositeY) => {
-    const {naturalWidth, naturalHeight} = this.env.image;
+    const { naturalWidth, naturalHeight } = this.env.image;
 
     // Make visible
     this.group.style.display = null;
