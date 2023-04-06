@@ -57,12 +57,11 @@ export default class PinpointTool extends Tool {
 PinpointTool.identifier = 'pinpoint';
 
 PinpointTool.supports = (annotation) => {
-  // const selector = annotation.selector('SvgSelector');
-  // if (selector) {
-  //   return (
-  //     selector.value?.match(/^<svg.*(<path)/g) &&
-  //     annotation.renderedVia === 'pinpoint'
-  //   );
-  // }
-  return false;
+  const selector = annotation.selector('SvgSelector');
+  if (selector) {
+    return (
+      selector.value?.match(/^<svg.*(<path)/g) &&
+      annotation.renderedVia === 'pinpoint'
+    );
+  }
 };

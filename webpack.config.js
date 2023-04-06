@@ -51,7 +51,7 @@ module.exports = {
     compress: true,
     hot: true,
     host: process.env.HOST || 'localhost',
-    port: 3000,
+    port: 4000,
     static: [{
       directory: resolveAppPath('public'),
       publicPath: '/'
